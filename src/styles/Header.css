@@ -15,9 +15,8 @@ body {
   position: relative;
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px 20px;
-  transition: top 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease; /* Плавность */
-  top: 0;
+  padding: 15px;
+  transition: all 0.3s ease;
   z-index: 100;
 }
 
@@ -27,8 +26,44 @@ body {
   left: 0;
   right: 0;
   width: 100%;
-  padding: 10px 20px;
+  padding: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Верхняя панель с информацией */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  padding: 10px 20px;
+  color: #333;
+}
+
+.top-bar .location, .top-bar .hours {
+  display: flex;
+  align-items: center;
+}
+
+.top-bar .location .icon, .top-bar .hours .icon {
+  margin-right: 8px;
+  font-size: 16px;
+  color: #A98604;
+}
+
+.top-bar .social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.top-bar .social-link {
+  font-size: 22px;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.top-bar .social-link:hover {
+  color: #A98604;
 }
 
 /* Контент хедера */
@@ -36,10 +71,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  padding: 10px 20px;
 }
 
-/* Логотип */
 .logo-section {
   display: flex;
   align-items: center;
@@ -62,7 +96,6 @@ body {
   font-weight: bold;
   color: #333;
   text-transform: uppercase;
-  margin-left: 10px;
 }
 
 /* Поисковая строка */
@@ -71,10 +104,9 @@ body {
   align-items: center;
   border: 2px solid #A98604;
   border-radius: 30px;
-  padding: 5px 10px;
+  padding: 5px;
   background-color: #fff;
-  flex: 1;
-  margin: 0 10px;
+  width: 320px;
 }
 
 .search-input {
@@ -91,7 +123,8 @@ body {
   background-color: #fff;
   border: none;
   border-radius: 50%;
-  padding: 10px;
+  padding: 12px;
+  margin-left: 10px;
   cursor: pointer;
   color: #A98604;
   font-size: 18px;
@@ -99,12 +132,19 @@ body {
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .header-search-button:hover {
-  background-color: #A98604;
-  color: #fff;
-  transform: scale(1.1);
+  background-color: #A98604; 
+  color: #fff; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+  transform: scale(1.1); 
+}
+
+.header-search-button:focus {
+  outline: none; 
+  box-shadow: 0 0 10px rgba(169, 134, 4, 0.5); 
 }
 
 /* Навигация */
@@ -125,76 +165,92 @@ body {
   color: #A98604;
 }
 
-/* Гамбургер-меню */
+/* Кнопка корзины */
+.cart {
+  background-color: #A98604;
+  padding: 8px 15px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+.cart svg {
+  margin-right: 5px;
+  color: white;
+}
+
+.cart .cart-count {
+  background-color: white;
+  color: #A98604;
+  border-radius: 50%;
+  padding: 3px 8px;
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+/* Мобильная адаптация */
 .menu-toggle {
   display: none;
-  font-size: 24px;
+  font-size: 30px;
   color: #A98604;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-/* Адаптивная версия */
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links.open {
+  display: block;
+}
+
+.nav-links a {
+  display: block;
+  padding: 10px;
+}
+
 @media (max-width: 768px) {
   .header-content {
-    display: flex;
-    justify-content: space-between; /* Элементы по краям */
-    align-items: center; /* Центрируем элементы по вертикали */
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .logo-section {
-    flex: 0 0 auto; /* Минимальный размер для логотипа */
+    margin-bottom: 15px;
   }
 
   .search-bar {
-    flex: 1; /* Растягиваем поисковик */
-    margin-right: 10px;
-    max-width: calc(100% - 50px); /* Учитываем место для гамбургера */
-  }
-
-  .menu-toggle {
-    display: block; /* Показываем гамбургер */
-    margin-left: 10px;
-    flex: 0 0 auto; /* Фиксированная ширина */
+    width: 100%;
+    margin-bottom: 15px;
   }
 
   .nav-links {
-    display: none; /* Скрыто по умолчанию */
-    position: absolute;
-    top: 100%; /* Под хедером */
-    left: 0;
+    display: none;
     width: 100%;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px 0;
+    justify-content: space-between;
   }
 
-  .nav-links.open {
-    display: flex; /* Показываем при открытии */
-  }
-
-  .nav-links a {
-    padding: 10px 20px;
-    text-align: center;
+  .menu-toggle {
+    display: block;
   }
 }
 
 @media (max-width: 480px) {
+  .header {
+    padding: 10px 0;
+  }
+
   .site-name {
     font-size: 22px;
   }
 
   .search-bar {
-    flex: 1; /* Занимает всю ширину */
-    margin-right: 5px;
-  }
-
-  .menu-toggle {
-    font-size: 22px;
-    margin-left: 5px;
+    width: 100%;
+    margin: 10px 0;
   }
 }

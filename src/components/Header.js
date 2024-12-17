@@ -57,7 +57,34 @@ const Header = () => {
           <FontAwesomeIcon icon={faBars} />
         </button>
       </div>
-    
+      {/* <div className="top-bar">
+        <div className="location">
+          <FontAwesomeIcon icon={faMapMarkerAlt} className="icon" />
+          <span>Кыргызстан - Бишкек</span>
+        </div>
+        <div className="hours">
+          <FontAwesomeIcon icon={faClock} className="icon" />
+          <span>MON - SAT: 10:00 AM - 20:00 PM</span>
+        </div>
+        <div className="social-links">
+          <a 
+            href="https://wa.me/996990909109" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="social-link"
+          >
+            <FontAwesomeIcon icon={faWhatsapp} className="icon" />
+          </a>
+          <a 
+            href="https://www.instagram.com/2702ooll" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="social-link"
+          >
+            <FontAwesomeIcon icon={faInstagram} className="icon" />
+          </a>
+        </div>
+      </div> */}
     </header>
   );
 };
