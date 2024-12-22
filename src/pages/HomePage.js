@@ -61,10 +61,7 @@ const HomePage = ({ addToCart, onAddProduct }) => {
 
                 <Carousel.Item>
                     <img className="d-block w-100" src={image2} alt="Второй слайд" />
-                    {/* <Carousel.Caption>
-                        <h3>Второй слайд</h3>
-                        <p>Описание второго слайда.</p>
-                    </Carousel.Caption> */}
+
                 </Carousel.Item>
             </Carousel>
 

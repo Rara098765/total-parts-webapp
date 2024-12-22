@@ -7,27 +7,28 @@ import { faSearch, faMapMarkerAlt, faClock, faBars } from '@fortawesome/free-sol
 import { faWhatsapp, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 const Header = () => {
-  const [isSticky, setIsSticky] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false); // Состояние для прилипания хедера
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Состояние для меню
 
-  // Обработчик для скроллинга
+  // Обработчик прокрутки
   const handleScroll = () => {
     if (window.scrollY > 100) {
-      setIsSticky(true);
+      setIsSticky(true); // Добавляем класс sticky, если прокручено больше 100px
     } else {
-      setIsSticky(false);
+      setIsSticky(false); // Убираем класс sticky, если прокручено меньше 100px
     }
   };
 
-  // Тоггл для открытия/закрытия меню
+  // Обработчик для открытия/закрытия меню
   const toggleMenu = () => {
-    setIsMenuOpen(prevState => !prevState);
+    setIsMenuOpen((prevState) => !prevState);
   };
 
+  // useEffect для добавления обработчика прокрутки
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    
-    // Убираем обработчик при размонтировании компонента
+    window.addEventListener('scroll', handleScroll); // Добавляем обработчик события прокрутки
+
+    // Очищаем обработчик при размонтировании компонента
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -42,6 +43,7 @@ const Header = () => {
             <h5 className="site-name"><strong>Total</strong>Parts.kg</h5>
           </Link>
         </div>
+        
         <div className="search-bar">
           <input type="text" placeholder="Введите товар" className="search-input" />
           <button className="header-search-button">
@@ -53,11 +55,12 @@ const Header = () => {
           <Link to="/about" onClick={() => setIsMenuOpen(false)}>О нас</Link>
           <Link to="/catalog" onClick={() => setIsMenuOpen(false)}>Каталог</Link>
         </nav>
-        <button className="menu-toggle" onClick={toggleMenu}>
+        <button className={`menu-toggle ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
           <FontAwesomeIcon icon={faBars} />
         </button>
+
       </div>
-      {/* <div className="top-bar">
+      <div className="top-bar">
         <div className="location">
           <FontAwesomeIcon icon={faMapMarkerAlt} className="icon" />
           <span>Кыргызстан - Бишкек</span>
@@ -84,7 +87,7 @@ const Header = () => {
             <FontAwesomeIcon icon={faInstagram} className="icon" />
           </a>
         </div>
-      </div> */}
+      </div>
     </header>
   );
 };
